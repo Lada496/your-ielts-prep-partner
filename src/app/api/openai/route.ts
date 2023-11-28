@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       ...messages,
       {
         role: "assistant",
-        content: response.choices[0].message.content,
+        content: response.choices[0]!.message.content,
       },
       {
         role: "user",
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
   });
 
   return Response.json([
-    response.choices[0].message.content,
-    response2.choices[0].message.content,
+    response.choices[0]!.message.content,
+    response2.choices[0]!.message.content,
   ]);
 }
