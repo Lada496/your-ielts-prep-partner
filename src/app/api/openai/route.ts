@@ -9,7 +9,9 @@ const openai = new OpenAI({
 });
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  const { messages } = (await req.json()) as {
+    messages: Array<{ role: "user" | "assistant"; content: string }>;
+  };
 
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
