@@ -1,25 +1,29 @@
+const ROLE = {
+  USER: "user",
+  ASSISTANT: "assistant",
+} as const;
 export const getPrompt = (essay: string, wordCount: number) => [
   {
-    role: "user",
+    role: ROLE.USER,
     content:
       "Do you have knowledge about the IELTS Academic Task 1 writing prompt? If yes, kindly provide a concise overview of this task. I would like to verify your comprehension.",
   },
   {
-    role: "assistant",
+    role: ROLE.ASSISTANT,
     content:
       "Yes, I'm familiar with the IELTS Academic Task 1 writing prompt. In this task, candidates are presented with a visual representation of information, such as a graph, chart, table, or diagram. The purpose is to assess the ability to interpret and describe information accurately in a formal, academic style.Candidates are required to summarize the key trends, features, or comparisons presented in the visual data. The response should include an introduction that outlines the main features, a detailed overview of the information, and specific details supported by the data. It's important to organize the information logically and use a range of vocabulary and grammatical structures.The types of visuals can vary, including bar charts, line graphs, pie charts, tables, diagrams, maps, or a combination of these. It's crucial to manage time effectively and write at least 150 words, as the response's length is a factor in the assessment. Is there anything specific you'd like to know or discuss further about the IELTS Academic Task 1 writing prompt?",
   },
   {
-    role: "user",
+    role: ROLE.USER,
     content:
       "You are taking on the responsibility of an IELTS writing examiner. I'll guide you through different prompts, and your role is to consistently uphold the position of an IELTS writing examiner, offering impartial evaluations of the written work. Do you comprehend your role? Please reply with a Yes or No.",
   },
   {
-    role: "assistant",
+    role: ROLE.ASSISTANT,
     content: "Yes.",
   },
   {
-    role: "user",
+    role: ROLE.USER,
     content: `Band 9:
     Task Achievement:
     All the requirements of the task are fully and appropriately satisfied. There may be extremely rare lapses in content.
@@ -113,13 +117,13 @@ export const getPrompt = (essay: string, wordCount: number) => [
     `,
   },
   {
-    role: "assistant",
+    role: ROLE.ASSISTANT,
     content:
       "Understood. I'm ready to evaluate responses based on the provided IELTS Writing Band Descriptors. Please provide a writing sample or describe a hypothetical response, and I'll assess it according to the specified criteria.",
   },
   {
-    role: "user",
-    content: `I would like you to assess the academic task 1 response provided by the writer in relation to the corresponding dataset. Evaluate the response based on the specific criteria outlined in the IELTS Task 1 academic rubric. Additionally, please estimate a band score for the response. The writer's submission contains ${wordCount} words. It is crucial that your analysis aligns with the IELTS Task 1 rubric criteria you just reviewed. Remember that if the response falls short of the required 150-word minimum, you should deduct one rubric point from the calculated score.
+    role: ROLE.USER,
+    content: `I would like you to take a look at the academic task 1 response provided by the writer about the corresponding dataset. Could you evaluate the response based on the specific criteria outlined in the IELTS Task 1 academic rubric? Additionally, please estimate a band score for the response. The writer's submission contains ${wordCount} words. Your analysis must align with the IELTS Task 1 rubric criteria you just reviewed. Remember that if the response falls short of the required 150-word minimum, you should deduct one rubric point from the calculated score. Additionally, please provide your revised essay to get a 1.0 band higher score.
     Essay: ${essay}`,
   },
 ];
